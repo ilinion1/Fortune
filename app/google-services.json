@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93118544480",
+    "project_id": "fortune-2be88",
+    "storage_bucket": "fortune-2be88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93118544480:android:f44c8eba90a7b92e422105",
+        "android_client_info": {
+          "package_name": "com.gerija.fortune"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93118544480-a6e58m9h2aucm6le8ps6063rcgbm2bo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5ruhAX0nCuL3amTScGBrvnVmjIhFt6Xs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93118544480-a6e58m9h2aucm6le8ps6063rcgbm2bo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
