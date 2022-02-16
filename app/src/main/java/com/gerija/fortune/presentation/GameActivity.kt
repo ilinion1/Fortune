@@ -1,9 +1,9 @@
 package com.gerija.fortune.presentation
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.gerija.fortune.R
 import com.gerija.fortune.databinding.ActivityGameBinding
 

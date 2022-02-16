@@ -1,12 +1,11 @@
 package com.gerija.fortune.presentation
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.CookieManager
-import android.webkit.WebSettings
-import android.webkit.WebSettings.*
+import android.webkit.WebSettings.LOAD_DEFAULT
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import com.gerija.fortune.databinding.ActivityWebViewBinding
 
 class WebViewActivity : AppCompatActivity() {
