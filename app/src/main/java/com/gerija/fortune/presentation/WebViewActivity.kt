@@ -1,4 +1,4 @@
-package com.gerija.fortune
+package com.gerija.fortune.presentation
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

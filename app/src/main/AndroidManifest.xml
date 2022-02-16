@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".MyApplication"
+        android:name=".presentation.MyApplication"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,14 +15,14 @@
         android:theme="@style/Theme.Fortune"
         tools:targetApi="m">
         <activity
-            android:name=".GameActivity"
+            android:name=".presentation.GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.WebViewActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".WebViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>

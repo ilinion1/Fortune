@@ -1,4 +1,4 @@
-package com.gerija.fortune
+package com.gerija.fortune.data
 
 import android.annotation.SuppressLint
 import android.util.Log

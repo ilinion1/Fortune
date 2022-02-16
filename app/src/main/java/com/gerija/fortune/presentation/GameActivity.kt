@@ -1,12 +1,16 @@
-package com.gerija.fortune
+package com.gerija.fortune.presentation
+
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import com.gerija.fortune.R
 import com.gerija.fortune.databinding.ActivityGameBinding
 
 class GameActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityGameBinding
+    val viewModel: GameViewModel by viewModels()
 
     /**
      * Список всех картинок, которые используются в рандоме
@@ -28,16 +32,23 @@ class GameActivity : AppCompatActivity() {
         R.drawable.utug, R.drawable.pulesos
     )
 
-    var count = 0
+    private var count = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel.countWin.observe(this){
+            binding.tvCount.text = it
+            count = it.toInt()
+        }
+        viewModel.gameImage.observe(this){
+            binding.imMain.setImageResource(it)
+        }
         randomImage()
     }
-
 
     /**
      * рандом картинок
@@ -47,6 +58,7 @@ class GameActivity : AppCompatActivity() {
             val imageSize = imageList.size - 1
             val random = (0..imageSize).random()
             binding.imMain.setImageResource(imageList[random])
+            viewModel.gameImage.value = imageList[random]
             countWin(imageList[random])
         }
     }
@@ -59,6 +71,7 @@ class GameActivity : AppCompatActivity() {
             if (image == it) {
                 count++
                 binding.tvCount.text = count.toString()
+                viewModel.countWin.value = count.toString()
             }
         }
     }
