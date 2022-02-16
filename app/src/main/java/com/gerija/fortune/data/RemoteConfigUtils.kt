@@ -1,4 +1,4 @@
-package com.gerija.fortune
+package com.gerija.fortune.data
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -10,11 +10,18 @@ import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 
 object RemoteConfigUtils {
 
+    //для ответа с сервера бот или пользователь
     private const val ANSWER_SERVICE = "answer"
+
+    //для ответа с сервера, на случай через него задать повторный "первый вход"
+    private const val REPEAT_FIRST_VISITED = "repeat_first_visited"
+
     private val defaults: Map<String, Any> = hashMapOf(ANSWER_SERVICE to false)
+
+    //ответ от сервера, true или false
     val status = MutableLiveData<Boolean>()
 
-    private const val REPEAT_FIRST_VISITED = "repeat_first_visited"
+
 
     @SuppressLint("StaticFieldLeak")
     private lateinit var remoteConfig: FirebaseRemoteConfig
@@ -24,7 +31,7 @@ object RemoteConfigUtils {
     }
 
 
-    fun getFirebaseRemoteConfig(): FirebaseRemoteConfig {
+    private fun getFirebaseRemoteConfig(): FirebaseRemoteConfig {
         remoteConfig = Firebase.remoteConfig
 
         val configSettings = remoteConfigSettings {
@@ -34,10 +41,7 @@ object RemoteConfigUtils {
         remoteConfig.apply {
             setConfigSettingsAsync(configSettings)
             setDefaultsAsync(defaults)
-            Log.d("MyLog", "1")
             fetchAndActivate().addOnCompleteListener {
-                Log.d("MyLog", "2")
-                Log.d("MyLog", "${remoteConfig.getBoolean(ANSWER_SERVICE)}")
                 status.value = true
             }
 

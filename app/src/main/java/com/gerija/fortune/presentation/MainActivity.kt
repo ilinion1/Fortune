@@ -1,11 +1,12 @@
-package com.gerija.fortune
+package com.gerija.fortune.presentation
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.gerija.fortune.data.RemoteConfigUtils
 import com.gerija.fortune.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,12 +15,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var visited: SharedPreferences
     private lateinit var bot: SharedPreferences
+    private val viewModel: GameViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.getDataServerUseCase()
         getAnswerServer()
     }
 
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
      * Получаю ответ от сервера и запускаю webView или игру
      */
     private fun getAnswerServer() {
-        if (firstVisit()||RemoteConfigUtils.repeatFirstVisited()){
+        if (firstVisit()|| RemoteConfigUtils.repeatFirstVisited()){
 
             //ожидаю ответ от сервера, если true, показываю webView, если false игру
             RemoteConfigUtils.status.observe(this){
